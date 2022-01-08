@@ -33,8 +33,12 @@
 </template>
 
 <script>
+import BaseIcon from "@/components/BaseIcon";
 export default {
   name: "event-show",
+  components: {
+    BaseIcon,
+  },
   props: {
     event: {
       type: Object,
