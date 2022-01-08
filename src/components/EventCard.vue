@@ -4,7 +4,7 @@
     :to="{ name: 'event-show', params: { id: event.id } }"
   >
     <div class="event-card -shadow">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+      <span class="eyebrow">{{ eventDate }}</span>
       <h4>{{ event.title }}</h4>
       <BaseIcon name="users">{{ event.attendees.length }} attending</BaseIcon>
       <span></span>
@@ -14,12 +14,18 @@
 
 <script>
 import BaseIcon from "@/components/BaseIcon.vue";
+import { dateTimeFormat } from "@/utils/date";
 export default {
   components: {
     BaseIcon,
   },
   props: {
     event: Object,
+  },
+  computed: {
+    eventDate() {
+      return dateTimeFormat(this.event.date);
+    },
   },
 };
 </script>

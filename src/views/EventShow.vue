@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+      <span class="eyebrow">{{ eventDate }}</span>
       <h1 class="title">{{ event.title }}</h1>
       <h5>Organized by {{ event.organizer ? event.organizer.name : "" }}</h5>
       <h5>Category: {{ event.category }}</h5>
@@ -34,6 +34,7 @@
 
 <script>
 import BaseIcon from "@/components/BaseIcon";
+import { dateTimeFormat } from "@/utils/date";
 export default {
   name: "event-show",
   components: {
@@ -43,6 +44,11 @@ export default {
     event: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    eventDate() {
+      return dateTimeFormat(this.event.date);
     },
   },
 };
