@@ -22,10 +22,6 @@ const routes = [
     name: "event-show",
     component: EventShow,
   },
-  {
-    path: "/about",
-    name: "About",
-  },
 ];
 
 const router = new VueRouter({
