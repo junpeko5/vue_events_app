@@ -32,6 +32,9 @@ function getPageEvents(routeTo, next) {
     .then(() => {
       routeTo.params.page = currentPage;
       next();
+    })
+    .catch(() => {
+      next({ name: "network-issue" });
     });
 }
 export default {
