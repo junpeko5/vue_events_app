@@ -1,4 +1,4 @@
-# vue_events_app
+# Vue.js 2系のサンプルアプリケーション
 
 ## Project setup
 ```
@@ -20,5 +20,22 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## JSON Server
+
+Fake REST API server.
+
+### install
+```bash
+npm i -g json-server
+```
+
+### Run server
+
+```bash
+json-server --watch db.json
+
+## 読み込みを2秒遅延
+json-server --watch db.json --delay 2000
+```
+
+> https://github.com/typicode/json-server
