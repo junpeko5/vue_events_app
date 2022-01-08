@@ -6,6 +6,7 @@ import EventShow from "@/views/EventShow";
 import NotFound from "@/components/NotFound";
 import NetworkIssue from "@/views/NetworkIssue";
 import store from "@/store";
+import NProgress from "nprogress";
 
 Vue.use(VueRouter);
 
@@ -61,6 +62,15 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export default router;
