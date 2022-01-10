@@ -72,6 +72,34 @@
       "date": "2021-12-01T15:00:00.000Z",
       "time": "3:00",
       "attendees": []
+    },
+    {
+      "id": 6,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "title": "Working?",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 7,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "title": "Working?",
+      "description": "test",
+      "location": "",
+      "date": "2021-12-01T15:00:00.000Z",
+      "time": "3:00",
+      "attendees": []
     }
   ]
 }

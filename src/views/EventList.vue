@@ -1,21 +1,27 @@
 <template>
-  <div>
-    <EventCard v-for="event in events" :event="event" :key="event.id" />
-    <template v-if="page !== 1">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-2 gap-2">
+      <EventCard v-for="event in events" :event="event" :key="event.id" />
+    </div>
+    <div class="flex justify-center gap-2 my-2">
+      <template v-if="page !== 1">
+        <router-link
+          :to="{ name: 'event-list', query: { page: page - 1 } }"
+          rel="prev"
+          class="cursor-pointer hover:text-blue-300 border rounded-lg p-2 shadow"
+        >
+          Prev Page
+        </router-link>
+      </template>
       <router-link
-        :to="{ name: 'event-list', query: { page: page - 1 } }"
-        rel="prev"
+        v-if="hasNextPage"
+        :to="{ name: 'event-list', query: { page: page + 1 } }"
+        rel="next"
+        class="cursor-pointer hover:text-blue-300 border rounded-lg p-2 shadow"
       >
-        Prev Page
+        Next Page
       </router-link>
-    </template>
-    <router-link
-      v-if="hasNextPage"
-      :to="{ name: 'event-list', query: { page: page + 1 } }"
-      rel="next"
-    >
-      Next Page
-    </router-link>
+    </div>
   </div>
 </template>
 
