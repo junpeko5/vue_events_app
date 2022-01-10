@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import "./index.css";
 import "nprogress/nprogress.css";
+import "./assets/tailwind.css";
 
 Vue.config.productionTip = false;
 
