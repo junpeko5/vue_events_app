@@ -18,16 +18,7 @@
           <p class="text-red-500 text-xs italic">Please choose a password.</p>
         </div>
         <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2">
-            日程
-          </label>
-          <Datepicker
-            :language="ja"
-            format="yyyy年MM月dd日"
-            v-model="event.date"
-            class=""
-            inputClass="appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
+          <BaseDatepicker label="日程" v-model="event.date" />
         </div>
         <div class="flex items-center justify-between">
           <BaseButton type="submit"> 登録する </BaseButton>
@@ -47,15 +38,13 @@
 <script>
 import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
-import Datepicker from "vuejs-datepicker";
-import { ja } from "vuejs-datepicker/dist/locale";
 import BaseButton from "@/components/BaseButton";
+import BaseDatepicker from "@/components/BaseDatepicker";
 export default {
   name: "event-create",
-  components: { BaseButton, BaseInput, BaseSelect, Datepicker },
+  components: { BaseDatepicker, BaseButton, BaseInput, BaseSelect },
   data() {
     return {
-      ja: ja,
       event: this.createFreshEventObject(),
       categories: this.$store.state.categories,
     };
