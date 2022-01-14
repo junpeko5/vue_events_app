@@ -7,7 +7,14 @@
       >
         <div class="mb-4">
           <BaseInput label="タイトル" v-model="event.title" type="text" />
-          <p class="text-red-500 text-xs italic">Please choose a password.</p>
+          <template v-if="!$v.event.title.$error">
+            <p
+              v-if="!$v.event.title.required"
+              class="text-red-500 text-xs italic"
+            >
+              タイトルは必須です。
+            </p>
+          </template>
         </div>
         <div class="mb-6">
           <BaseSelect
@@ -15,10 +22,25 @@
             :options="categories"
             v-model="event.category"
           />
-          <p class="text-red-500 text-xs italic">Please choose a password.</p>
+          <template v-if="!$v.event.category.$error">
+            <p
+              v-if="!$v.event.category.required"
+              class="text-red-500 text-xs italic"
+            >
+              カテゴリーは必須です。
+            </p>
+          </template>
         </div>
         <div class="mb-6">
           <BaseDatepicker label="日程" v-model="event.date" />
+          <template v-if="!$v.event.date.$error">
+            <p
+              v-if="!$v.event.date.required"
+              class="text-red-500 text-xs italic"
+            >
+              日程は必須です。
+            </p>
+          </template>
         </div>
         <div class="flex items-center justify-between">
           <BaseButton type="submit"> 登録する </BaseButton>
@@ -40,6 +62,7 @@ import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
 import BaseButton from "@/components/BaseButton";
 import BaseDatepicker from "@/components/BaseDatepicker";
+import { required } from "vuelidate/lib/validators";
 export default {
   name: "event-create",
   components: { BaseDatepicker, BaseButton, BaseInput, BaseSelect },
@@ -49,9 +72,16 @@ export default {
       categories: this.$store.state.categories,
     };
   },
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      date: { required },
+    },
+  },
   methods: {
     createEvent() {
-      alert("submit");
+      console.log(this.$v.$invalid);
     },
     createFreshEventObject() {
       const id = Math.floor(Math.random() * 10000000);
