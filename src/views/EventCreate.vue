@@ -91,10 +91,7 @@ export default {
         category: "",
         title: "",
         description: "",
-        location: "",
-        date: "",
-        time: "",
-        attendees: [],
+        date: new Date(),
       };
     },
   },
