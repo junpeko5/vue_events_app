@@ -9,20 +9,14 @@
       >
         <span class="eyebrow">{{ eventDate }}</span>
         <h4>{{ event.title }}</h4>
-        <BaseIcon name="users">{{ event.attendees.length }} attending</BaseIcon>
-        <span></span>
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
-import BaseIcon from "@/components/BaseIcon.vue";
 import { dateTimeFormat } from "@/utils/date";
 export default {
-  components: {
-    BaseIcon,
-  },
   props: {
     event: Object,
   },
