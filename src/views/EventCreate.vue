@@ -7,7 +7,7 @@
       >
         <div class="mb-4">
           <BaseInput label="タイトル" v-model="event.title" type="text" />
-          <template v-if="!$v.event.title.$error">
+          <template v-if="$v.event.title.$error">
             <p
               v-if="!$v.event.title.required"
               class="text-red-500 text-xs italic"
@@ -22,7 +22,7 @@
             :options="categories"
             v-model="event.category"
           />
-          <template v-if="!$v.event.category.$error">
+          <template v-if="$v.event.category.$error">
             <p
               v-if="!$v.event.category.required"
               class="text-red-500 text-xs italic"
@@ -33,7 +33,7 @@
         </div>
         <div class="mb-6">
           <BaseDatepicker label="日程" v-model="event.date" />
-          <template v-if="!$v.event.date.$error">
+          <template v-if="$v.event.date.$error">
             <p
               v-if="!$v.event.date.required"
               class="text-red-500 text-xs italic"
@@ -81,6 +81,7 @@ export default {
   },
   methods: {
     createEvent() {
+      this.$v.$touch();
       console.log(this.$v.$invalid);
     },
     createFreshEventObject() {
